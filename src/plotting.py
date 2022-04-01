@@ -1,9 +1,25 @@
 import numpy as np 
 import matplotlib.pyplot as plt
 import pandas as pd
+### Add new modules for assignment ###
+import sys 
+import os
 
-### Import file and copy everything else that was on assignment 2
-worksheet = np.genfromtxt("hefesto_fixed_dataset.csv", delimiter=',',skip_header=0)
+### Let's refactor the code by adding functions ###
+
+### Import file and copy everything else that was on assignment 2 ###
+### Now let's create the first function and generalize "worksheet" into "filename" ###
+def read_data(filename, header_lines = 0):
+    '''Allows us to automate the reading from file process and convert the data into a np.array'''
+    worksheet = np.genfromtxt(filename, delimiter=',',skip_header=header_lines)
+    array_data = np.array(worksheet[1:], dtype=float)
+    print(array_data)
+    print(array_data.shape)
+    print (type.array_data)
+    return data
+
+
+###worksheet = np.genfromtxt("hefesto_fixed_dataset.csv", delimiter=',',skip_header=0)
 print (worksheet)
 print(type(worksheet))
 
