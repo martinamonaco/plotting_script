@@ -28,9 +28,13 @@ print(array_data)
 print(array_data.shape)
 print (type.array_data)
 
-relevant_data = array_data[:,1:,]
-print("Let's remove the column number from the dataset \n", relevant_data)
-print("This is the pyrolite viscosity column \n", relevant_data[:,0])
+### Added second function ###
+def process_data():
+    '''This function will help us trim the original file'''
+    relevant_data = array_data[:,1:,]
+    print("Let's remove the column number from the dataset \n", relevant_data)
+    print("This is the pyrolite viscosity column \n", relevant_data[:,0])
+    return relevant_data
 
 ### Make and save figure
 hefesto_plot = plt.figure()
