@@ -10,7 +10,6 @@ import os
 ### Import file and copy everything else that was on assignment 2 ###
 ### Now let's create the first function and generalize "worksheet" into "filename" ###
 def read_data(fname, header_lines = 1):
-    #fname = '../data/input.csv'
     '''Allows us to automate the reading from file process and convert the data into a np.array'''
     worksheet = pd.read_csv(fname, delimiter='\t',header=header_lines)
     print (worksheet)
@@ -45,25 +44,52 @@ def plot_data(relevant_data,plot_fname):
     plot_fname = os.path.join("hefesto.pdf")
 
     hefesto_plot.savefig(plot_fname)
-    
-
-fname = './data/input.csv'
-#array_data = (fname, header_lines = 0
-array_data = read_data(fname, header_lines = 0)
-process_data(array_data)
-relevant_data = process_data(array_data)
-plot_data(relevant_data,'hefesto.pdf')
 
 
 ### Use pd and make .json file
-all_data = pd.read_csv("./data/input.csv", index_col = 0, header=0) ### first column needs to be the index. It starts from 0
-all_data.info()
-all_data.head()
-all_data.to_json("hefesto.json")
+#all_data = pd.read_csv("./data/input.csv", index_col = 0, header=0) ### first column needs to be the index. It starts from 0
+#all_data.info()
+#all_data.head()
+#all_data.to_json("hefesto.json")
 
-json_data = pd.read_json("hefesto.json")
-json_data.info()
+#json_data = pd.read_json("hefesto.json")
+#json_data.info()
+################################
 
-### Added a small modification just to see if the "M" popped up next to the file
-### The file looks pretty clean already, so I have no idea what to remove from it!
-### I'll stage the changes and then commit them 
+def csv_to_json(fname, output_fname):
+    """Convert a csv file named 'fname' to json."""
+    all_data = pd.read_csv(fname, index_col=0, header=0)
+    all_data.info()
+    all_data.to_json(output_fname)
+    
+
+### I ultimately want to call this function ###
+def plot():
+    """Main plotting function."""
+    current_file_location = os.path.dirname(__file__)
+
+    data_directory = os.path.join(current_file_location,
+                                        "..",
+                                        "data")
+    results_directory = os.path.join(current_file_location,
+                                        "..",
+                                        "results")
+
+    input_data_filename = os.path.join(data_directory,
+                                        "input.csv")
+    array_data = read_data(input_data_filename)
+    process_data(array_data)
+    relevant_data = process_data(array_data)
+
+    plot_filename = os.path.join(results_directory,
+                                        "hefesto.pdf")
+    plot_data(relevant_data, plot_filename)
+
+    conversion_filename = os.path.join(data_directory,
+                                        "input.csv")
+    json_filename = os.path.join(results_directory,
+                                        "hefesto_output.json")
+    csv_to_json(conversion_filename, json_filename)
+
+plot()
+
