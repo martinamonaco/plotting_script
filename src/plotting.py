@@ -58,7 +58,7 @@ def plot_data(relevant_data,plot_fname):
 
 def csv_to_json(fname, output_fname):
     """Convert a csv file named 'fname' to json."""
-    all_data = pd.read_csv(fname, index_col=0, header=0)
+    all_data = pd.read_csv(fname, header=0, delimiter='\t')
     all_data.info()
     all_data.to_json(output_fname)
     
