@@ -1,12 +1,11 @@
 #!/bin/python
-###TODO: fix pylint warning ###
+'''New module'''
 
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-### Add new modules for assignment ###
-### TODO: fix pyling warning
+'''help(module_name)'''
 
 ### Let's refactor the code by adding functions ###
 
@@ -84,5 +83,3 @@ def plot():
  #assert array_data.shape == (50,4), \
   #  "Unexpected size of the array. Array size: " + str(array_data.shape)
 plot()
-
-### TODO: fix pylint warning ###

@@ -12,6 +12,7 @@ sys.path.append(os.path.join(
     ".."))
 
 from src import plotting
+'''help(plotting)'''
 ###TODO: fix pylint warning (plotting worked just fine before using pylint) ###
 ### Also: the module position can't be changed (the script crashes otherwise)###
 
@@ -91,4 +92,3 @@ def test_csv_to_json():
     converted_data = pd.read_json(json_filename)
     assert input_data.info() is converted_data.info(), \
        "Error during conversion."
-       ###TODO: fix pylint warning###
