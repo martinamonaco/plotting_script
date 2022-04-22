@@ -1,3 +1,5 @@
+#!/bin/python
+
 import numpy as np 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -20,7 +22,6 @@ def read_data(fname, header_lines = 1):
     print(array_data.shape)
     #print (type.array_data)
     return array_data
-
 
 ### Added second function ###
 def process_data(array_data):
@@ -91,5 +92,10 @@ def plot():
                                         "hefesto_output.json")
     csv_to_json(conversion_filename, json_filename)
 
+ #assert array_data.shape == (50,4), \
+  #  "Unexpected size of the array. Array size: " + str(array_data.shape)
 plot()
 
+#test_input_data = np.array([[0,32],[1,212]])
+#test_output = process_data(test_input_data)
+#test_expected_output = np.array([[0,32],[1,212]])
