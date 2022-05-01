@@ -12,9 +12,6 @@ sys.path.append(os.path.join(
     ".."))
 
 from src import plotting
-'''help(plotting)'''
-###TODO: fix pylint warning (plotting worked just fine before using pylint) ###
-### Also: the module position can't be changed (the script crashes otherwise)###
 
 def test_plot():
     """This test runs the plot() function and makes sure it does not crash."""
@@ -38,20 +35,13 @@ def test_read_data():
 def test_process_data():
     '''This function will help us trim the original file'''
     array_data = np.array([[0,1,2],[3,4,5]])
-    relevant_data = ([[1,2],[4,5]])
-    print (relevant_data, 'this is the relevant data')
-    test_relevant_data = array_data[:,1:,]
-    test_output = test_relevant_data
-    #test_relevant_data = np.array(array_data[:,1:,])
-    #test_output = process_data(test_input_data)
-    test_expected_output = test_relevant_data
+    test_expected_output = array_data[:,1:,]
+    print (test_expected_output, 'this is the expected output')
+    test_output = plotting.process_data(array_data)
 
-    ### failing test ###
-    # assert np.all(test_output != test_expected_output), \
-       # "The process_data function returned an unexpected result."
     assert np.all(test_output == test_expected_output), \
        "The process_data function returned an unexpected result."
-test_process_data()
+
 def test_plot_data():
     """This test runs the plot_data() function and makes
     sure it creates a plot file."""
@@ -64,7 +54,6 @@ def test_plot_data():
 
     if os.path.exists(plot_filename):
         os.remove(plot_filename)
-    ### the test fails when the function isn't called ###
 
     array_data = np.array([[0,1,2],[3,4,5]])
     plotting.plot_data(array_data, plot_filename)
